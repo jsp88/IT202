@@ -41,7 +41,7 @@ if(isset($_POST["login"])){
 								"last_name"=>$result["last_name"]
 							);
 							echo var_export($_SESSION, true);
-							echo "<a href='home.php'>GO TO HOME PAGE</a>";
+							echo "<a href='HomePage.php'>GO TO HOME PAGE</a>";
 						}
 						else{
 							echo "<div>INVALID PASSWORD!</div>";

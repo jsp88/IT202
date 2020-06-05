@@ -2,4 +2,4 @@
 session_start();
 echo "WELCOME, " . $_SESSION["user"]["email"];
 ?>
-<a href="logout.php">Logout</a>
+<a href="RegLogout.php">Logout</a>
