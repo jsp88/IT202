@@ -40,11 +40,11 @@ if(isset($_POST["login"]))
                            }
                            else
                            {
-                               echo "<div>INVAILID PASSWORD!</div>";
+                               echo "<div>INVALID PASSWORD!</div>";
                            }
 					   }
 					   else{
-						  echo "<div>INVAILID USER</div>";
+						  echo "<div>INVALID USER</div>";
 					       }
 				    }
 			 }
