@@ -1,6 +1,6 @@
 
 <head>
-    <title>Survey sit</title>
+    <title> Survey sit </title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <?php

@@ -7,6 +7,7 @@ nav
     clear: left;
     margin: 0px;
     padding: 0;
+    border-bottom: 3px solid royalblue;
     display: block;
     text-align: center;
 }
@@ -21,7 +22,6 @@ nav li
 {
     display: inline-block;
     padding: 7px;
-    background: bisque;
 }
 input {
     background-color: #e6ffff;
