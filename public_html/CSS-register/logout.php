@@ -6,6 +6,5 @@ session_destroy();
 ?>
 <!DOCTYPE html>
 <html>
-<h1>HTML Links</h1>
-<p><a href="login.php">Login</a></p>
+<p>To go back to login :  <a href="login.php">Login</a></p>
 </html>
