@@ -1,7 +1,7 @@
-CREATE TABLE Survey_Table  (
-    ID int NOT NULL,
-    Email varchar(254) ,
-    TodayDate date,
-    AnswerTime time,
-    PRIMARY KEY (ID)
-);
+CREATE TABLE Survey(
+    id int auto_increment,
+    title varchar(30) not null unique,
+    description TEXT,
+    visibility int, --DRAFT 0, Private 1, Publish 2
+    primary key (id)
+)
