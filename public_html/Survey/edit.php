@@ -17,7 +17,7 @@ if(isset($_GET["Id"])){
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
 }
 else{
-    echo "No Id provided in url, don't forget this or sample won't work.";
+    echo "No Id provided in url";
 }
 ?>
 
@@ -67,7 +67,7 @@ if(isset($_POST["updated"])){
         }
     }
     else{
-        echo "Name and quantity must not be empty.";
+       echo "Title, Description and Visibility fields cannot be empty.";
     }
 }
 ?>
