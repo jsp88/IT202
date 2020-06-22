@@ -17,11 +17,10 @@ if(isset($_POST["created"])){
     $visibility = $_POST["visibility"];
     if(!empty($title) && !empty($description) && !empty($visibility)){
         require("config.php");
-        require("common.inc.php");
         $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
         try{
             $db = new PDO($connection_string, $dbuser, $dbpass);
-            $stmt = $db->prepare("INSERT INTO Survey (title, discription, visibility) VALUES (:title, :discription, :visibility)");
+            $stmt = $db->prepare("INSERT INTO Survey (title, description, visibility) VALUES (:title, :description, :visibility)");
             $result = $stmt->execute(array(
                 ":title" => $title,
                 ":description" => $description,
@@ -46,7 +45,7 @@ if(isset($_POST["created"])){
         }
     }
     else{
-        echo "Title discription and visibility must not be empty.";
+        echo "Title description and visibility must not be empty.";
     }
 }
 ?>
