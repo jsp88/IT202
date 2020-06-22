@@ -1,6 +1,5 @@
 <?php
 require("config.php");
-require("common.inc.php");
 $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
 $db = new PDO($connection_string, $dbuser, $dbpass);
 $Id = -1;
