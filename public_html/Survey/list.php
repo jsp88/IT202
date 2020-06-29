@@ -1,36 +1,67 @@
-
 <?php
-require("common.inc.php");
-$query = file_get_contents(__DIR__ . "/IT202/public_html/Survey/SelectAllItemOfSurvey.sql");
-if(isset($query) && !empty($query)){
-    try {
-        $stmt = getDB()->prepare($query);
-        //we don't need to pass any arguments since we're not filtering the results
-        $stmt->execute();
-        //Note the fetchAll(), we need to use it over fetch() if we expect >1 record
-        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-    catch (Exception $e){
-        echo $e->getMessage();
-    }
+
+    
+$filter = "";
+if(isset($_POST["filter"])){
+    $filter = $_POST["filter"];
+	
 }
 ?>
-<!--This part will introduce us to PHP templating,
-note the structure and the ":" -->
-<!-- note how we must close each check we're doing as well-->
+<form method="POST">
+	<div>
+    
+    <button type="submit" name="asc_sort" id="asc_sort" class="button" value="1">Ascending</button>
+	<button type="submit" name="dec_sort" id="dec_sort" class="button" value="1">Descending</button>
+	</div>
+</form>
+<?php
+require("common.inc.php");
+if(isset($_POST['asc_sort']) && !empty($_POST['asc_sort']) && $_POST['asc_sort']==1)
+{
+     $query = "SELECT * FROM Survey ORDER BY title ASC";
+	 
+	 
+	 try {
+            $stmt = getDB()->prepare($query);
+            
+            $stmt->execute([":asc_sort"=>$filter]);
+            
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+
+}
+if(isset($_POST['dec_sort']) && !empty($_POST['dec_sort']) && $_POST['dec_sort']==1){
+
+    $query = "SELECT * FROM Survey ORDER BY title DESC";
+	
+	try {
+            $stmt = getDB()->prepare($query);
+            
+            $stmt->execute([":dec_sort"=>$filter]);
+            
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+}
+
+?>
+
 <?php if(isset($results)):?>
-    <p>This shows when we have results</p>
+    <p>we have results.</p>
     <ul>
-        <!-- Here we'll loop over all our results and reuse a specific template for each iteration,
-        we're also using our helper function to safely return a value based on our key/column name.-->
+        
         <?php foreach($results as $row):?>
             <li>
                 <?php echo get($row, "title")?>
+			
                 <?php echo get($row, "description");?>
-                <a href="delete.php?Id=<?php echo get($row, "id");?>">Delete</a>
+                
             </li>
         <?php endforeach;?>
     </ul>
 <?php else:?>
-    <p>This shows when we don't have results</p>
+    <p>we do not have results.</p>
 <?php endif;?>
