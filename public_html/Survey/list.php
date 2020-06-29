@@ -20,7 +20,6 @@ if(isset($_POST['AscendingSort']) && !empty($_POST['AscendingSort']) && $_POST['
 {
      $query = "SELECT * FROM Survey ORDER BY title ASC";
 	 
-	 
 	 try {
             $stmt = getDB()->prepare($query);
             
@@ -50,7 +49,7 @@ if(isset($_POST['DescendingSort']) && !empty($_POST['DescendingSort']) && $_POST
 ?>
 
 <?php if(isset($results)):?>
-    <p>we have results.</p>
+    <p>your results are listed below.</p>
     <ul>
         
         <?php foreach($results as $row):?>
@@ -63,5 +62,5 @@ if(isset($_POST['DescendingSort']) && !empty($_POST['DescendingSort']) && $_POST
         <?php endforeach;?>
     </ul>
 <?php else:?>
-    <p>we do not have results.</p>
+    <p>No any results are found.</p>
 <?php endif;?>

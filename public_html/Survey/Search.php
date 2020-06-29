@@ -11,9 +11,8 @@ if(isset($_POST["search"])){
     <input type="submit" value="Search"/>
 </form>
 <?php
+require("common.inc.php");
 if(isset($search)) {
-
-    require("config.php");
     $query = "SELECT * FROM Survey where title like CONCAT('%', :title, '%')";
     if (isset($query) && !empty($query)) {
         try {
