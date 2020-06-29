@@ -14,7 +14,7 @@ if(isset($_POST["search"])){
 if(isset($search)) {
 
     require("config.php");
-    $query = file_get_contents(__DIR__ . "/IT202/public_html/Survey/SearchItemFromSurvey.sql");
+    $query = file_get_contents("/IT202/public_html/Survey/SearchItemFromSurvey.sql");
     if (isset($query) && !empty($query)) {
         try {
             $stmt = getDB()->prepare($query);
