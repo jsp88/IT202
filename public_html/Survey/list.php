@@ -10,13 +10,13 @@ if(isset($_POST["filter"])){
 <form method="POST">
 	<div>
     
-    <button type="submit" name="asc_sort" id="asc_sort" class="button" value="1">Ascending</button>
-	<button type="submit" name="dec_sort" id="dec_sort" class="button" value="1">Descending</button>
+    <button type="submit" name="AscendingSort" id="AscendingSort" class="button" value="1">Ascending</button>
+	<button type="submit" name="DescendingSort" id="DescendingSort" class="button" value="1">Descending</button>
 	</div>
 </form>
 <?php
 require("common.inc.php");
-if(isset($_POST['asc_sort']) && !empty($_POST['asc_sort']) && $_POST['asc_sort']==1)
+if(isset($_POST['AscendingSort']) && !empty($_POST['AscendingSort']) && $_POST['AscendingSort']==1)
 {
      $query = "SELECT * FROM Survey ORDER BY title ASC";
 	 
@@ -24,7 +24,7 @@ if(isset($_POST['asc_sort']) && !empty($_POST['asc_sort']) && $_POST['asc_sort']
 	 try {
             $stmt = getDB()->prepare($query);
             
-            $stmt->execute([":asc_sort"=>$filter]);
+            $stmt->execute([":AscendingSort"=>$filter]);
             
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (Exception $e) {
@@ -32,14 +32,14 @@ if(isset($_POST['asc_sort']) && !empty($_POST['asc_sort']) && $_POST['asc_sort']
         }
 
 }
-if(isset($_POST['dec_sort']) && !empty($_POST['dec_sort']) && $_POST['dec_sort']==1){
+if(isset($_POST['DescendingSort']) && !empty($_POST['DescendingSort']) && $_POST['DescendingSort']==1){
 
     $query = "SELECT * FROM Survey ORDER BY title DESC";
 	
 	try {
             $stmt = getDB()->prepare($query);
             
-            $stmt->execute([":dec_sort"=>$filter]);
+            $stmt->execute([":DescendingSort"=>$filter]);
             
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (Exception $e) {
