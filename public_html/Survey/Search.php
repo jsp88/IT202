@@ -11,9 +11,8 @@ if(isset($_POST["search"])){
 </form>
 <?php
 if(isset($search)) {
-
     require("common.inc.php");
-    $query = file_get_contents(__DIR__ . "public_html/Survey/SearchItemFromSurvey.sql");
+    $query = "SELECT * FROM Survey where title like CONCAT('%', :title, '%')";
     if (isset($query) && !empty($query)) {
         try {
             $stmt = getDB()->prepare($query);
