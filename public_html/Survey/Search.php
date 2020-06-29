@@ -1,4 +1,3 @@
-
 <?php
 $search = "";
 if(isset($_POST["search"])){
@@ -6,14 +5,15 @@ if(isset($_POST["search"])){
 }
 ?>
 <form method="POST">
-    <input type="text" name="search" placeholder="Search for items"
+    <input type="text" name="search" placeholder="Search for Survey"
     value="<?php echo $search;?>"/>
     <input type="submit" value="Search"/>
 </form>
 <?php
-require("common.inc.php");
 if(isset($search)) {
-    $query = "SELECT * FROM Survey where title like CONCAT('%', :title, '%')";
+
+    require("common.inc.php");
+    $query = file_get_contents(__DIR__ . "public_html/Survey/search_title.sql");
     if (isset($query) && !empty($query)) {
         try {
             $stmt = getDB()->prepare($query);
@@ -25,7 +25,6 @@ if(isset($search)) {
     }
 }
 ?>
-
 <?php if(isset($results) && count($results) > 0):?>
     <p>This shows when we have results</p>
     <ul>
@@ -33,7 +32,7 @@ if(isset($search)) {
             <li>
                 <?php echo get($row, "title")?>
                 <?php echo get($row, "description");?>
-                <a href="delete.php?Id=<?php echo get($row, "id");?>">Delete</a>
+                <a href="delete.php?thingId=<?php echo get($row, "id");?>">Delete</a>
             </li>
         <?php endforeach;?>
     </ul>
