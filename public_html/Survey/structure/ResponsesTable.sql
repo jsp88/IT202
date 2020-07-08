@@ -5,6 +5,6 @@ CREATE TABLE Responses(
     answer_id: int,
     surveytime: datetime,
     user_id: int,
-    foreign key(survey_id)  REFERENCES Survey(`id`),
-    foreign key(user_id) REFERENCES Users(`id`)
-)
+    FOREIGN KEY(survey_id) REFERENCES Survey(`id`),
+    FOREIGN KEY(user_id) REFERENCES Users(`id`)
+    )

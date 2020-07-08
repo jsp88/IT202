@@ -8,7 +8,7 @@ try{
     id: int not null,
     question_id: int,
     answer: text,
-    FOREIGN KEY(question_id)  REFERENCES Question(`id`)
+    FOREIGN KEY(question_id)  REFERENCES Questions(`id`)
     )CHARACTER SET utf8 COLLATE utf8_general_ci");
 	$r = $stmt->execute();
 	echo var_export($stmt->errorInfo(), true);

@@ -3,5 +3,5 @@ CREATE TABLE Survey(
     user_id: int,
     surveytime: datetime,
     cached_taken_count: int,
-    foreign key(user_id)
-)
+    FOREIGN KEY (user_id) REFERENCES Users(`id`)
+    )
