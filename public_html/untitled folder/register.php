@@ -25,7 +25,7 @@ if(isset($_POST["register"])){
             $LnameErr = "Last name required";
         }
        else {
-            $email = $_POST["email"];
+           $lastname = $_POST["lastname"];
         }
 	
 	if(empty($_POST["email"])){

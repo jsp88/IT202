@@ -19,7 +19,7 @@ if(isset($_POST["register"]))
 			$LnameErr = "Last name required";	
 		} 
        else {
-			$email = $_POST["email"];
+			$lastname = $_POST["lastname"];
 		} 
 	
     if(empty($_POST["email"])){
@@ -47,7 +47,8 @@ if(isset($_POST["register"]))
 		
 	if(!empty($email) && !empty($password) && !empty($_POST["cpassword"]) && !empty($firstname) && !empty($lastname)){
 		if($password == $cpassword){
-			$connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
+            
+            $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
 			try{
 				$db = new PDO($connection_string, $dbuser, $dbpass);
 				$hash = password_hash($password, PASSWORD_BCRYPT);
