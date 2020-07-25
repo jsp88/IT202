@@ -50,7 +50,7 @@ function DisplayList(response) {
        SurveyName = response[i]["titlename"];
       console.log(SurveyName);
 	
-	html += '<td>' + '<a href="#" style="color: black;" ' + 'onclick=GetQuestion("' + SurveyName + '") >' + SurveyName + ' </td>';
+	html += '<td>' + '<a href="#" style="color: blacks;" ' + 'onclick=GetQuestion("' + SurveyName + '") >' + SurveyName + ' </td>';
 	html += '</tbody>';
     }
     document.getElementById("review").innerHTML = html;
@@ -97,7 +97,7 @@ function DisplayQuestion(response) {
 	if(response['question5']=='-1')
 		{ count--; }
 	
-		exam+= '<h1 style="float:center;color:white;">' + survey + "'s Survey </h1><br>";
+		exam+= '<h1 style="float:center;color:black;">' + survey + "'s Survey </h1><br>";
 	for (var index = 1; index <= count; index++) {
 		
       var QuestionID = index;
