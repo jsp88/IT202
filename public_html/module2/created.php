@@ -102,11 +102,11 @@ function DisplayQuestion(response) {
 		
       var QuestionID = index;
       console.log(QuestionID);
-      var question = response['question'+index];
-	  console.log(question);
+      var quest = response['question'+index];
+	  console.log(quest);
       
       window.QuestionIDs.push(QuestionID);
-      exam += '<h3 style="float:center;">' + index + " " + question + '</h3>';
+      exam += '<h3 style="float:center;">' + index + " " + quest+ '</h3>';
       exam += '<textarea rows="10" style="width:80%" placeholder="Fill your answer over here..." id=' + QuestionID + ' class="questions" >' + '</textarea>';
     }
     exam += '<br><br><button type="button" class="submitbutton" onclick="SendAns()">Submit</button>';
