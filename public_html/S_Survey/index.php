@@ -1,27 +1,34 @@
+<h1>  </h1>
 
-<?php
+<?php 
 include("header.php");
+
+
+echo " THIS IS A SURVEY PAGE ";
+
+
 ?>
-<h1>     </h1>
+
+
+
+
 <h1>  </h1>
 <h2>  </h2>
-<html>
-    body  
-    {
-    background-image: url("surveyimage.jpg");
-    }
-</html>
+
+<a target="_blank" href="homep.jpg">
+      <img src="homep.jpg" width="400" height="200">
+    </a>
+
+    
+
 
 <form method="POST">
 	<br><br>
 	<input type="submit" name="login" value="GET STARTED"/>
-    
 </form>
 
 <?php
-session_start();
-echo "Welcome to the survey page, " . $_SESSION["user"]["email"];
-width="600" height="400"
+
 if(isset($_POST["login"])) {
 	
 	header("Location: login.php");
@@ -29,3 +36,4 @@ if(isset($_POST["login"])) {
 }
 
 ?>
+
