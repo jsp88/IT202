@@ -50,7 +50,7 @@ function DisplayList(response) {
        SurveyName = response[i]["titlename"];
       console.log(SurveyName);
 	
-	html += '<td>' + '<a href="#" style="color: white;" ' + 'onclick=GetQuestion("' + SurveyName + '") >' + SurveyName + ' </td>';
+	html += '<td>' + '<a href="#" style="color: black;" ' + 'onclick=GetQuestion("' + SurveyName + '") >' + SurveyName + ' </td>';
 	html += '</tbody>';
     }
     document.getElementById("review").innerHTML = html;
