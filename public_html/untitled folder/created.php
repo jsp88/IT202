@@ -135,9 +135,9 @@ function display_question(response) {
     xhr.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             	 console.log(this.responseText);
-	   	 var html="<div class='submitted'>";
-	   	 html+='<h4><center><font size="+2">Exam Successfully Submitted</font></center></h4>';
-   		 var ajaxDisplay = document.getElementById('review');
+	   	 
+	   	 var html='<h2><center>Survey Successfully Submitted</center></h2>';
+   		 var ajaxDisplay = document.getElementById('selection');
     		ajaxDisplay.innerHTML=html;
         }
       };

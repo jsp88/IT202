@@ -1,10 +1,15 @@
 <?php
-include("header.php");
+
 
 ?>
 
 <?php
+include("header.php");
+
 if(isset($_POST["created"])){
+	
+	
+	echo $_POST["email"];
 	
 	if(empty($_POST["title"])){
 			
@@ -32,9 +37,11 @@ if(isset($_POST["created"])){
 		$connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
         try{
             //$db = getDB();
+			$userid = '6'
 			$db = new PDO($connection_string, $dbuser, $dbpass);
-            $stmt = $db->prepare("INSERT INTO Survey (title, description) VALUES (:title, :description)");
+            $stmt = $db->prepare("INSERT INTO Survey (user_id, title, description) VALUES (:user_id, :title, :description)");
             $result = $stmt->execute(array(
+				":user_id" => $userid,
                 ":title" => $title,
                 ":description" => $description,
 				
@@ -49,11 +56,7 @@ if(isset($_POST["created"])){
                 if ($result){
 					
 					header('Location: create_question.php');
-					/*
-					echo"<br>---------------------------------------------------------------------------------<br>";
-                    echo "Successfully created new survey for: " . $title;
-					echo"<br>---------------------------------------------------------------------------------<br>";
-					*/
+					
                 }
                 else{
                     echo "Error creating data";
