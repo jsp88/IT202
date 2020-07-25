@@ -4,32 +4,20 @@ body
     font-size: 32px;
     background-color: azure;
 }
-nav
-{
-    clear: left;
-    margin: 0px;
-    padding: 0;
-    border-bottom: 3px solid royalblue;
-    display: block;
-    text-align: center;
-}
 ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+  list-style-type: lower-latin;
   overflow: hidden;
-  background-color: #333;
+  background-color: lightcyan;
   position: -webkit-sticky;
   position: sticky;
-  top: 0;
 }
 
 nav li
 {
     display: block;
     color: lavenderblush;
-    text-align: center;
-    padding: 14px 16px;
+    float: left;
+    padding: 14px;
     text-decoration: none;    
 }
 li a:hover {
@@ -41,7 +29,7 @@ li a:hover {
 }
 .error {color: #FF0000;}
 body {
-    background-color: lightgrey;
+    background-color: lavender;
     
     text-align: center;
     font-size: 32px
@@ -49,7 +37,7 @@ body {
     
 }
 input {
-    background-color: #e6ffff;
+    background-color: floralwhite;
 }
 label {
     border: 1px dotted black;
