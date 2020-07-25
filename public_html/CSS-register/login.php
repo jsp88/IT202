@@ -10,6 +10,8 @@ include("header.php");
 	<input type="password" id="p" name="password" autocomplete="off"/>
 	</label>
 	<input type="submit" name="login" value="Login"/>
+    <p> FOR NEW REGISTRATION:     <a href="register.php">Click Here</a></p>
+    <br><br>
 </form>
 
 <?php
@@ -39,11 +41,11 @@ if(isset($_POST["login"])){
 							$_SESSION["user"] = array(
 								"id"=>$result["id"],
 								"email"=>$result["email"],
-								"first_name"=>$result["first_name"],
-								"last_name"=>$result["last_name"]
+								// "first_name"=>$result["first_name"],
+								// "last_name"=>$result["last_name"]
 							);
 							echo var_export($_SESSION, true);
-							header("Location: home.php");
+							header("Location: response.php");
 						}
 						else{
 							echo "<div>Invalid password!</div>";

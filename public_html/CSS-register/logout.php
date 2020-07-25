@@ -1,6 +1,6 @@
 <?php
 include("header.php");
-echo "You have been logged out";
+echo "You have successfully logged out";
 session_unset();
 session_destroy();
 ?>
