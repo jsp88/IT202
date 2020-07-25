@@ -86,11 +86,12 @@ if(isset($_POST["register"])){
     <label for="firstname">firstname
     <input type="firstname" id="firstname" name="firstname" autocomplete="off" />
     <span class="error" id="firstname">* <?php echo $fnameErr;?></span>
-    </label>
+    </label> <br><br>
+    
     <label for="lastname">lastname
     <input type="lastname" id="lastname" name="lastname" autocomplete="off" />
     <span class="error" id="lastname">* <?php echo $LnameErr;?></span>
-    </label>
+    </label><br><br>
         
 	<label for="email">Email
 	<input type="email" id="email" name="email" />

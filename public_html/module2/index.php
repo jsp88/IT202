@@ -5,7 +5,7 @@ echo " Survey Page ";
 ?>
 
 <a target="_blank" href="surveyimage.jpg">
-      <img src="surveyimage.jpg" width="600" height="400">
+      <img src="surveyimage.jpg" width="400" height="200">
     </a>
 
 <form method="POST">
