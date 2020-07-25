@@ -1,68 +1,51 @@
 <style>
-body
-{
-    font-size: 32px;
-    background-color: azure;
-}
-ul {
-  list-style-type: lower-latin;
-  overflow: hidden;
-  background-color: lightcyan;
-  position: -webkit-sticky;
-  position: sticky;
+body {
+  font-size: 32px;
+  
 }
 
-nav li
-{
-    display: block;
-    color: lavenderblush;
-    float: left;
-    padding: 14px;
-    text-decoration: none;    
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
 }
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
 li a:hover {
   background-color: #111;
 }
-.active
-{
-  background-color: #2ABF40;
+
+.active {
+  background-color: pink;
 }
 .error {color: #FF0000;}
 body {
-    background-color: lavender;
-    
-    text-align: center;
-    font-size: 32px
-    font-family: "Times New Roman", Times, serif;
-    
-}
-input {
-    background-color:blue;
-}
-label {
-    border: 1px dotted black;
-}
-form {
-    width:95%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 15px;
-    text-align: center;
-}
-h1
-{
-    text-align: center;
-    font-family: "Times New Roman", Times, serif;
-}
-h3
-{
-    
-    font-family: "Times New Roman", Times, serif;
-    text-align: center;
+	background-color: lightcyan;
+	
+	text-align: center;
+	font-size: 32px
+	font-family: "Times New Roman", Times, serif;
+	
 }
 div {
   border: 5px solid black;
-  background-color: aliceblue;
+  background-color: lightgoldenrodyellow;
   text-align: center;
   margin-top: 20px;
   margin-bottom: 50px;
@@ -73,4 +56,7 @@ div {
   padding-bottom: 30px;
   padding-left: 10px;
 }
+
+
+
 </style>
