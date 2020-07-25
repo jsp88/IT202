@@ -1,17 +1,17 @@
 <?php
 require("functions.php");
 $db = getDB();
-$idnum = -1;
+$idnumber = -1;
 $result = array();
 
-if(isset($_GET["idnum"])){
-    $idnum = $_GET["idnum"];
+if(isset($_GET["idnumber"])){
+    $idnumber = $_GET["idnumber"];
     $stmt = $db->prepare("SELECT * FROM Survey where id = :id");
-    $stmt->execute([":id"=>$idnum]);
+    $stmt->execute([":id"=>$idnumber]);
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
 }
 else{
-    echo "ID not provided in url. Please put '?idnum=(id number where you want to update data)' at the end of URL. ";
+    echo "ID is not provided in url. Please put the id'?idnumber=(id number where you want to update data)' at the end of URL. ";
 }
 ?>
 
@@ -22,9 +22,6 @@ else{
 	<label for="description">Description
 	<input type="text" id="description" name="description" value="<?php echo get($result, "description");?>"/>
 	</label>
-	<label for="visibility">Visibility
-	<input type="number" id="visibility" name="visibility" value="<?php echo get($result, "visibility");?>" />
-	</label>
 	<input type="submit" name="delete" value="Delete Survey"/>
 </form>
 
@@ -32,13 +29,12 @@ else{
 if(isset($_POST["delete"])){
     $title = $_POST["title"];
     $description = $_POST["description"];
-    $visibility = $_POST["visibility"];
-    if(!empty($title) && !empty($description) && !empty($visibility)){
+    if(!empty($title) && !empty($description)){
         try{
             $stmt = $db->prepare("DELETE FROM Survey where id=:id");
             $result = $stmt->execute(array(
                 
-                ":id" => $idnum
+                ":id" => $idnumber
             ));
             $e = $stmt->errorInfo();
             if($e[0] != "00000"){
@@ -59,7 +55,7 @@ if(isset($_POST["delete"])){
         }
     }
     else{
-        echo "Title, Description and Visibility fields cannot be empty.";
+        echo "Title and  Description fields cannot be empty.";
     }
 }
 ?>

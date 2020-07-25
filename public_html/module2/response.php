@@ -21,14 +21,12 @@ include("header.php");
 
 if(isset($_POST["yes1"])) {
 	
-	header("Location: create.php");
-	
+	header("Location: create.php");	
 }
 
-if(isset($_POST["yes"])) {
-	
+if(isset($_POST["yes"])) 
+{
 	header("Location: created.php");
-	
 }
 
 ?>

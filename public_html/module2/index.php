@@ -1,26 +1,12 @@
-<h1>  </h1>
 
 <?php 
 include("header.php");
-
-
-echo " THIS IS A SURVEY PAGE ";
-
-
+echo " Survey Page ";
 ?>
 
-
-
-
-<h1>  </h1>
-<h2>  </h2>
-
-<a target="_blank" href="homep.jpg">
-      <img src="homep.jpg" width="400" height="200">
+<a target="_blank" href="surveyimage.jpg">
+      <img src="surveyimage.jpg" width="600" height="400">
     </a>
-
-    
-
 
 <form method="POST">
 	<br><br>
@@ -29,10 +15,9 @@ echo " THIS IS A SURVEY PAGE ";
 
 <?php
 
-if(isset($_POST["login"])) {
-	
-	header("Location: login.php");
-	
+if(isset($_POST["login"])) 
+{
+	header("Location: login.php");	
 }
 
 ?>

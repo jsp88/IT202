@@ -5,17 +5,17 @@ include("header.php");
 <?php
 $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
 $db = new PDO($connection_string, $dbuser, $dbpass);
-$idnum = -1;
+$idnumber = -1;
 $result = array();
 
-if(isset($_GET["idnum"])){
-    $idnum = $_GET["idnum"];
+if(isset($_GET["idnumber"])){
+    $idnumber = $_GET["idnum"];
     $stmt = $db->prepare("SELECT * FROM Survey where id = :id");
-    $stmt->execute([":id"=>$idnum]);
+    $stmt->execute([":id"=>$idnumber]);
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
 }
 else{
-    echo "ID not provided in url. Please put '?idnum=(id number where you want to update data)' at the end of URL. ";
+    echo "ID is not provided in url. Please put id '?idnumber=(id number where you want to update data)' at the end of URL. ";
 }
 
 ?>
@@ -48,9 +48,6 @@ else{
 	<input type="text" id="question5" name="question5" value="<?php echo get($result, "question5");?>"/>
 	</label><br><br>
 	
-	<label for="visibility">Visibility
-	<input type="number" id="visibility" name="visibility" value="<?php echo get($result, "visibility");?>" />
-	</label><br><br>
 	<input type="submit" name="updated" value="Update Survey"/>
 </form>
 
@@ -64,10 +61,9 @@ if(isset($_POST["updated"])){
 	$question3 = $_POST["question3"];
 	$question4 = $_POST["question4"];
 	$question5 = $_POST["question5"];
-    $visibility = $_POST["visibility"];
-    if(!empty($title) && !empty($description) && !empty($visibility) && !empty($question1) && !empty($question2) && !empty($question3) && !empty($question4) && !empty($question5)){
+    if(!empty($title) && !empty($description) && !empty($question1) && !empty($question2) && !empty($question3) && !empty($question4) && !empty($question5)){
         try{
-            $stmt = $db->prepare("UPDATE Survey set title = :title, description =: description, question1 =: question1, question2 =: question2, question3 =: question3, question4 =: question4, question5 =: question5, visibility =: visibility where id=:id");
+            $stmt = $db->prepare("UPDATE Survey set title = :title, description =: description, question1 =: question1, question2 =: question2, question3 =: question3, question4 =: question4, question5 =: question5, where id=:id");
             $result = $stmt->execute(array(
                 ":title" => $title,
                 ":description" => $description,
@@ -76,8 +72,7 @@ if(isset($_POST["updated"])){
 				":question3" => $question3,
 				":question4" => $question4,
 				":question5" => $question5,
-                ":visibility" => $visibility,
-                ":id" => $idnum
+                ":id" => $idnumber
             ));
             $e = $stmt->errorInfo();
             if($e[0] != "00000"){
@@ -86,7 +81,7 @@ if(isset($_POST["updated"])){
             else{
                 
                 if ($result){
-                    echo "Successfully updated data: " . $title;
+                    echo "Data are succrssfully updated: " . $title;
                 }
                 else{
                     echo "Error updating data";

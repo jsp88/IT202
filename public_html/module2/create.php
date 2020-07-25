@@ -2,13 +2,26 @@
 include("header.php");
 
 ?>
+<div>
+<form method="POST">
+    <label for="title">title
+	<input type="text" id="title" name="title" />
+	<span class="error" id="title">* <?php echo $titlError;?></span>
+	</label><br><br>
+	<label for="description">Description
+	<input type="text" id="description" name="description" />
+	<span class="error" id="description">* <?php echo $descriptionErr;?></span>
+	</label><br><br>
+    <input type="submit" name="created" value="Create Survey"/>
+</form>
+</div>
 
 <?php
 if(isset($_POST["created"])){
 	
 	if(empty($_POST["title"])){
 			
-			$titleerr = "Title needed";
+			$titleError = "Title is missing";
 			
 		}
 		else{
@@ -16,7 +29,7 @@ if(isset($_POST["created"])){
 		}
 	if(empty($_POST["description"])){
 			
-			$deserr = "Description needed";
+			$descriptionErr = "Description is missing";
 			
 		}
 		else{
@@ -26,12 +39,8 @@ if(isset($_POST["created"])){
 	
 	
     if(!empty($title) && !empty($description)){
-        
-		//require("functions.php");
-		
 		$connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
         try{
-            //$db = getDB();
 			$db = new PDO($connection_string, $dbuser, $dbpass);
             $stmt = $db->prepare("INSERT INTO Survey (title, description) VALUES (:title, :description)");
             $result = $stmt->execute(array(
@@ -49,11 +58,7 @@ if(isset($_POST["created"])){
                 if ($result){
 					
 					header('Location: create_question.php');
-					/*
-					echo"<br>---------------------------------------------------------------------------------<br>";
-                    echo "Successfully created new survey for: " . $title;
-					echo"<br>---------------------------------------------------------------------------------<br>";
-					*/
+
                 }
                 else{
                     echo "Error creating data";
@@ -69,16 +74,3 @@ if(isset($_POST["created"])){
 ?>
 
 
-<div>
-<form method="POST">
-    <label for="title">title
-	<input type="text" id="title" name="title" />
-	<span class="error" id="title">* <?php echo $titleerr;?></span>
-	</label><br><br>
-	<label for="description">Description
-	<input type="text" id="description" name="description" />
-	<span class="error" id="description">* <?php echo $deserr;?></span>
-	</label><br><br>
-    <input type="submit" name="created" value="Create Survey"/>
-</form>
-</div>
