@@ -75,7 +75,7 @@ if(isset($_POST["register"])){
 			
 		}
 		
-	if(isset($_POST["password"]) && isset($_POST["cpassword"]) && isset($_POST["email"]) && isset($_POST["firstname"] && isset($_POST["lastname"]){
+	if(isset($_POST["password"]) && isset($_POST["cpassword"]) && isset($_POST["email"]) && isset($_POST["firstname"] && isset($_POST["lastname"])){
 		if($password == $cpassword){
 			$connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
 			try{
