@@ -32,7 +32,7 @@
 			$answer3 = $array[3]['answer_body'];
 			$answer4 = $array[4]['answer_body'];
 			$answer5 = $array[5]['answer_body']; 
-            $sql = $db->prepare("INSERT INTO Answers(survey_id, answer1, answer2, answer3, answer4, answer5, user_id) VALUES('$id', '$answer1', '$answer2', '$answer3', '$answer4', '$answer5', '4')");
+            $sql = $db->prepare("INSERT INTO Answers(survey_id, answer1, answer2, answer3, answer4, answer5, user_id) VALUES('2', '$answer1', '$answer2', '$answer3', '$answer4', '$answer5', '4')");
 			
 			$stmt = $sql->execute();
 			  
