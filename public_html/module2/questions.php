@@ -1,10 +1,10 @@
 <?php
 	require('config.php');
-	$arr = array();
+	$array = array();
 	$response = file_get_contents('php://input');
-    $arr = json_decode($response,true);
+    $array = json_decode($response,true);       
 
-	$id = $arr['titlename'];
+	$id = $array['titlename'];
     
 	$connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
         try{
@@ -31,12 +31,12 @@
 			
 		if ( $stmt = $db->query($sql)){
 			$row = $stmt->fetch(PDO::FETCH_NUM);
-				$question1 = $row[0];
+				$question1= $row[0];
 				$question2 = $row[1];
 				$question3 = $row[2];
 				$question4 = $row[3];
 				$question5 = $row[4];
-				$sendarray= array("question1" => $question1, "question2" => $question2, "question3" => $question3, "question4" => $question4, "question5" => $question5);
+				$sendarray= array("=question1" => $question1, "question2" => $question2, "question3" => $question3, "question4" => $question4, "question5" => $question5);
 			}
 		$e = $stmt->errorInfo();
 		$f = json_encode($sendarray);
