@@ -4,7 +4,7 @@
 	$response = file_get_contents('php://input');
     $array = json_decode($response,true);       
 
-	$id = $array[0]['name'];
+	$id = $array[0]['tilename'];
     
 	$connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
         try{	
@@ -21,7 +21,6 @@
         catch (Exception $e){
             echo $e->getMessage();
         }
-		
 		
            	
 			$db = new PDO($connection_string, $dbuser, $dbpass);
