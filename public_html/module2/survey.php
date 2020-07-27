@@ -17,7 +17,7 @@ require("config.php");
 		if ( $stmt = $db->query($sql)) {
 			while ($row = $stmt->fetch(PDO::FETCH_NUM)) {
 				$term = $row[0];
-				$sendarray[] = array("titlename" => $term);
+				$sendarray[] = array("name" => $term);
 			}
 			}
 		 $e = $stmt->errorInfo();

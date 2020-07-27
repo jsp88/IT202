@@ -4,7 +4,7 @@ include("header.php");
 ?>
 <div>
 <form method="POST">
-    <label for="question">Do you want to create a survey?
+    <label for="question">Do you want to create a new survey?
 	<input type="submit" name="yes1" value="YES" />
 	
 	</label><br><br>
