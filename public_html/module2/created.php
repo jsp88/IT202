@@ -7,7 +7,7 @@ include("header.php");
 
 <br>
 <br>
-<center style="color: black; font-family:Roboto; font-size:40px;">Take survey</center> 
+<center style="color: black; font-family:Roboto; font-size:40px;">Take Survey</center> 
 <br> 
 <br> 
 <br> 
@@ -47,14 +47,14 @@ function display_list(response) {
     var html = "";
 
     html += '<thead> <tr>';
-      html += '<th style = "text-align: center">' + 'Surveys Available' + '</th>';
+      html += '<th style = "text-align: center">' + 'Available Surveys are below' + '</th>';
     html += '</tr> </thead>';
     html += '<tbody >';
     for (var i = 0; i < len; i++) {
        survey_name = response[i]["name"];
       console.log(survey_name);
 	
-	html += '<td>' + '<a href="#" style="color: white;" ' + 'onclick=getquestion("' + survey_name + '") >' + survey_name   + ' </td>';
+	html += '<td>' + '<a href="#" style="color: black;" ' + 'onclick=getquestion("' + survey_name + '") >' + survey_name   + ' </td>';
 	html += '</tbody>';
     }
     document.getElementById("review").innerHTML = html;
@@ -101,7 +101,7 @@ function display_question(response) {
 	if(response['q5']=='-1')
 		{ counter--; }
 	
-		exam+= '<h1 style="float:center;color:white;">' + survey + "'s Survey </h1><br>";
+		exam+= '<h1 style="float:center;color:black;">' + survey + "'s Survey </h1><br>";
 	for (var index = 1; index <= counter; index++) {
 		
       var question_id = index;
