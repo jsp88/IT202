@@ -18,7 +18,7 @@ require("config.php");
            	
 			$db = new PDO($connection_string, $dbuser, $dbpass);
 		
-            $sql = "SELECT Title FROM Survey";
+            $sql = "SELECT title FROM Survey";
 			
 		if ( $stmt = $db->query($sql)) {
 			while ($row = $stmt->fetch(PDO::FETCH_NUM)) {
