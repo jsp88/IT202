@@ -6,7 +6,7 @@
 
 	$id = $array['name'];
     
-	$connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
+	$connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8";
         try{
            	
 			$db = new PDO($connection_string, $dbuser, $dbpass);

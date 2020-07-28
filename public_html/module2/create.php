@@ -39,7 +39,7 @@ if(isset($_POST["created"])){
 	
 	
     if(!empty($title) && !empty($description)){
-		$connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
+		$connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8";
         try{
 			$db = new PDO($connection_string, $dbuser, $dbpass);
             $stmt = $db->prepare("INSERT INTO Survey (title, description) VALUES (:title, :description)");

@@ -3,7 +3,7 @@ include("header.php");
 ?>
 
 <?php
-$connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
+$connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8";
 $db = new PDO($connection_string, $dbuser, $dbpass);
 $idnumber = -1;
 $result = array();
