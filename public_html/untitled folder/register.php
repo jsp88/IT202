@@ -7,30 +7,14 @@ include("header.php");
 
 <?php
 
-$fnameErr=$LnameErr= "";
-$firstname=$lastname= "";
-$emailError = $passErr = "";
+$emailerr = $passerr = "";
 $email = $password = "";
 
 if(isset($_POST["register"])){
-    
-    if(empty($_POST["firstname"]))
-       {
-        $fnameErr = "First name required";
-        }
-       else {
-            $firstname = $_POST["firstname"];
-        }
-    if(empty($_POST["lastname"])){
-            $LnameErr = "Last name required";
-        }
-       else {
-           $lastname = $_POST["lastname"];
-        }
 	
 	if(empty($_POST["email"])){
 			
-			$emailError = "Email required";
+			$emailerr = "Email required";
 			
 			
 		} else {
@@ -38,7 +22,7 @@ if(isset($_POST["register"])){
 		}
 		if(empty($_POST["password"])){
 			
-			$passErr = "Password required";
+			$passerr = "Password required";
 		} else {
 			$password = $_POST["password"];
 			
@@ -51,19 +35,19 @@ if(isset($_POST["register"])){
 			
 		}
 		
-	if(!empty($email) && !empty($password) && !empty($_POST["cpassword"])&& !empty($firstname) && !empty($lastname)){
-		
+	if(!empty($email) && !empty($password) && !empty($_POST["cpassword"])){
+		//$password = $_POST["password"];
+		//$cpassword = $_POST["cpassword"];
+		//$email = $_POST["email"];
 		if($password == $cpassword){
 			//require("config.php");
 			$connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
 			try{
 				$db = new PDO($connection_string, $dbuser, $dbpass);
 				$hash = password_hash($password, PASSWORD_BCRYPT);
-				$stmt = $db->prepare("INSERT INTO Users ( email, firstname, lastname, password) VALUES(:email, :firstname, :lastname, :password)");
+				$stmt = $db->prepare("INSERT INTO Users (email, password) VALUES(:email, :password)");
 				$stmt->execute(array(
 					":email" => $email,
-                    ":firstname" => $firstname,
-                    ":lastname" => $lastname,
 					":password" => $hash
 				));
 				$e = $stmt->errorInfo();
@@ -92,24 +76,14 @@ if(isset($_POST["register"])){
 <span class="error">* required field</span>
 <form method="POST">
 
-    <label for="firstname">firstname
-    <input type="firstname" id="firstname" name="firstname" autocomplete="off" />
-    <span class="error" id="firstname">* <?php echo $fnameErr;?></span>
-    </label> <br><br>
-    
-    <label for="lastname">lastname
-    <input type="lastname" id="lastname" name="lastname" autocomplete="off" />
-    <span class="error" id="lastname">* <?php echo $LnameErr;?></span>
-    </label><br><br>
-
 	<label for="email">Email
 	<input type="email" id="email" name="email" />
-	<span class="error" id="email">* <?php echo $emailError;?></span>
+	<span class="error" id="email">* <?php echo $emailerr;?></span>
 	</label><br><br>
 	
 	<label for="p">Password
 	<input type="password" id="p" name="password" />
-	<span class="error" id="p">* <?php echo $passErr;?></span>
+	<span class="error" id="p">* <?php echo $passerr;?></span>
 	</label><br><br><br>
 	
 	<label for="cp">Confirm Password
