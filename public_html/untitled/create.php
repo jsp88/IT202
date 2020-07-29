@@ -33,7 +33,7 @@ if(isset($_POST["created"])){
         try{
             //$db = getDB();
 			$db = new PDO($connection_string, $dbuser, $dbpass);
-            $stmt = $db->prepare("INSERT INTO Survey (title, description) VALUES (:title, :description)");
+            $stmt = $db->prepare("INSERT INTO Survey (Title, Description) VALUES (:title, :description)");
             $result = $stmt->execute(array(
                 ":title" => $title,
                 ":description" => $description,
