@@ -2,7 +2,7 @@
 <?php
 include("header.php");
 ?>
-<a target="_blank" href="homep.jpg">
+<a target="_blank" href="surveyimage.jpg">
       <img src="surveyimage.jpg" width="600" height="400">
     </a>
 

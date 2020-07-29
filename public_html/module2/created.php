@@ -36,7 +36,7 @@ function sendtoquestion() {
         display_list(response);
       }
     };
-    xhr.open("POST", "survey.php", true);
+    xhr.open("POST", "survey.php" , true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.send();
 
