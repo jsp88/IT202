@@ -1,14 +1,15 @@
 <?php
-include("header.php");
+
 
 ?>
 
 <?php
+include("header.php");
 if(isset($_POST["insert"])){
 	
 	if(empty($_POST["question1"])){
 			
-			$questionerror = "Question required";
+			$questionErr = "Question required";
 			
 		}
 		else{
@@ -16,7 +17,7 @@ if(isset($_POST["insert"])){
 		}
 	if(empty($_POST["question2"])){
 			
-			$questionerror = "Question required";
+			$questionErr = "Question required";
 			
 		}
 		else{
@@ -24,7 +25,7 @@ if(isset($_POST["insert"])){
 		}
 	if(empty($_POST["question3"])){
 			
-			$questionerror = "Question required";
+			$questionErr= "Question required";
 			
 		}
 		else{
@@ -36,13 +37,17 @@ if(isset($_POST["insert"])){
 	if(!empty($question1) && !empty($question2) && !empty($question3)) {
 		
 		$connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
-		if(!empty($question1)){
+		
         try{
-            //$db = getDB();
 			$db = new PDO($connection_string, $dbuser, $dbpass);
-            $stmt = $db->prepare("INSERT INTO Questions (question1) VALUES (:question1)");
+            $stmt = $db->prepare("INSERT INTO Questions (survey_id, question1, question2, question3, question4, question5) VALUES (:survey_id, :question1, :question2, :question3, :question4, :question5)");
             $result = $stmt->execute(array(
+				":survey_id" => $surid,
                 ":question1" => $question1,
+				":question2" => $question2,
+				":question3" => $question3,
+				":question4" => $question4,
+				":question5" => $question5,
                 
             ));
 			
@@ -53,38 +58,9 @@ if(isset($_POST["insert"])){
             else{
                 
                 if ($result){
+					$title = $_POST["title"];
 					echo"<br>---------------------------------------------------------------------------------<br>";
-                    echo "Successfully created new survey for: " . $question1;
-					echo"<br>---------------------------------------------------------------------------------<br>";
-                }
-                else{
-                    echo "Error creating data";
-                }
-            }
-        }
-        catch (Exception $e){
-            echo $e->getMessage();
-        }
-		}
-		if(!empty($question2)){
-        try{
-            //$db = getDB();
-			$db = new PDO($connection_string, $dbuser, $dbpass);
-            $stmt = $db->prepare("INSERT INTO Questions (question2) VALUES (:question2)");
-            $result = $stmt->execute(array(
-                ":question2" => $question2,
-                
-            ));
-			
-            $e = $stmt->errorInfo();
-            if($e[0] != "00000"){
-                echo var_export($e, true);
-            }
-            else{
-                
-                if ($result){
-					echo"<br>---------------------------------------------------------------------------------<br>";
-                    echo "Successfully created new survey for: " . $question2;
+                    echo "Successfully created new survey for: " . $title;
 					echo"<br>---------------------------------------------------------------------------------<br>";
                 }
                 else{
@@ -95,101 +71,7 @@ if(isset($_POST["insert"])){
         catch (Exception $e){
             echo $e->getMessage();
         }
-		}
-		if(!empty($question3)){
-        try{
-            //$db = getDB();
-			$db = new PDO($connection_string, $dbuser, $dbpass);
-            $stmt = $db->prepare("INSERT INTO Questions (question3) VALUES (:question3)");
-            $result = $stmt->execute(array(
-                ":question3" => $question3,
-                
-            ));
-			
-            $e = $stmt->errorInfo();
-            if($e[0] != "00000"){
-                echo var_export($e, true);
-            }
-            else{
-                
-                if ($result){
-					echo"<br>---------------------------------------------------------------------------------<br>";
-                    echo "Successfully created new survey for: " . $question3;
-					echo"<br>---------------------------------------------------------------------------------<br>";
-                }
-                else{
-                    echo "Error creating data";
-                }
-            }
-        }
-        catch (Exception $e){
-            echo $e->getMessage();
-        }
-		}
-		if(!empty($question4)){
-        try{
-            //$db = getDB();
-			$db = new PDO($connection_string, $dbuser, $dbpass);
-            $stmt = $db->prepare("INSERT INTO Questions (question4) VALUES (:question4)");
-            $result = $stmt->execute(array(
-                ":question4" => $question4,
-                
-            ));
-			
-            $e = $stmt->errorInfo();
-            if($e[0] != "00000"){
-                echo var_export($e, true);
-            }
-            else{
-                
-                if ($result){
-					echo"<br>---------------------------------------------------------------------------------<br>";
-                    echo "Successfully created new survey for: " . $question4;
-					echo"<br>---------------------------------------------------------------------------------<br>";
-                }
-                else{
-                    echo "Error creating data";
-                }
-            }
-        }
-        catch (Exception $e){
-            echo $e->getMessage();
-        }
-		}
-		if(!empty($question5)){
-        try{
-            //$db = getDB();
-			$db = new PDO($connection_string, $dbuser, $dbpass);
-            $stmt = $db->prepare("INSERT INTO Questions (question5) VALUES (:question5)");
-            $result = $stmt->execute(array(
-                ":question5" => $question5,
-                
-            ));
-			
-            $e = $stmt->errorInfo();
-            if($e[0] != "00000"){
-                echo var_export($e, true);
-            }
-            else{
-                
-                if ($result){
-					echo"<br>---------------------------------------------------------------------------------<br>";
-                    echo "Successfully created new survey for: " . $question5;
-					echo"<br>---------------------------------------------------------------------------------<br>";
-                }
-                else{
-                    echo "Error creating data";
-                }
-            }
-        }
-        catch (Exception $e){
-            echo $e->getMessage();
-        }
-		}
-		
-		
 	}
-	
 }
 
 ?>
@@ -198,27 +80,28 @@ if(isset($_POST["insert"])){
 <form method="POST">
 
     <label for="question1">Question 1
-    <input type="text" id="question1" name="question1" />
-    <span class="error" id="question1">* <?php echo $questionerror;?></span>
-    </label><br><br>
-    <label for="question2">Question 2
-    <input type="text" id="question2" name="question2" />
-    <span class="error" id="question2">* <?php echo $questionerror;?></span>
-    </label><br><br>
-    <label for="question3">Question 3
-    <input type="text" id="question3" name="question3" />
-    <span class="error" id="question3">* <?php echo $questionerror;?></span>
-    </label><br><br>
-    <label for="question4">Question 4
-    <input type="text" id="question4" name="question4" />
-    </label><br><br>
-    <label for="question5">Question 5
-    <input type="text" id="question5" name="question5" />
-    </label><br><br>
+	<input type="text" id="question1" name="question1" />
+	<span class="error" id="question1">* <?php echo $questionErr;?></span>
+	</label><br><br>
+
+	<label for="question2">Question 2
+	<input type="text" id="question2" name="question2" />
+	<span class="error" id="question2">* <?php echo $questionErr;?></span>
+	</label><br><br>
+
+	<label for="question3">Question 3
+	<input type="text" id="question3" name="question3" />
+	<span class="error" id="question3">* <?php echo $questionErr;?></span>
+	</label><br><br>
+
+	<label for="question4">Question 4
+	<input type="text" id="question4" name="question4" />
+	</label><br><br>
+
+	<label for="question5">Question 5
+	<input type="text" id="question5" name="question5" />
+	</label><br><br>
+
     <input type="submit" name="insert" value="Create Questions"/>
 </form>
 </div>
-
-
-
-

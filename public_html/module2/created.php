@@ -33,7 +33,7 @@ function sendtoquestion() {
       if (this.readyState == 4 && this.status == 200) {
         var response = JSON.parse(this.responseText);
 		console.log(response);
-        display_list(response);
+        DisplayList(response);
       }
     };
     xhr.open("POST", "survey.php" , true);
@@ -42,7 +42,7 @@ function sendtoquestion() {
 
   }
 
-function display_list(response) {
+function DisplayList(response) {
     var len = Object.keys(response).length;
     var html = "";
 
@@ -54,7 +54,7 @@ function display_list(response) {
        survey_name = response[i]["name"];
       console.log(survey_name);
 	
-	html += '<td>' + '<a href="#" style="color: black;" ' + 'onclick=getquestion("' + survey_name + '") >' + survey_name   + ' </td>';
+	html += '<td>' + '<a href="#" style="color: black;" ' + 'onclick=GetQuestion("' + survey_name + '") >' + survey_name   + ' </td>';
 	html += '</tbody>';
     }
     document.getElementById("review").innerHTML = html;
@@ -62,7 +62,7 @@ function display_list(response) {
   }
 
 
-function getquestion(survey_name){
+function GetQuestion(survey_name){
     window.survey = survey_name;
     document.getElementById("review").innerHTML = "";
     document.getElementById("selection").innerHTML = "";
@@ -80,7 +80,7 @@ function getquestion(survey_name){
                  ajaxDisplay.innerHTML=html;
 	}
 	else{
-        display_question(response);
+        DisplayQuestion(response);
 	}
       }
     };
@@ -92,21 +92,21 @@ xhr.send(JSON.stringify(sendd));
   }
   
   
-function display_question(response) {
-    var counter = 5;
+function DisplayQuestion(response) {
+    var count = 5;
     var exam = "";
     var questionID = "";
-	if(response['q4']=='-1')
-		{ counter--; }
-	if(response['q5']=='-1')
-		{ counter--; }
+	if(response['Question4']=='-1')
+		{ count--; }
+	if(response['Question5']=='-1')
+		{ count--; }
 	
 		exam+= '<h1 style="float:center;color:black;">' + survey + "'s Survey </h1><br>";
-	for (var index = 1; index <= counter; index++) {
+	for (var index = 1; index <= count; index++) {
 		
       var question_id = index;
       console.log(question_id);
-      var question = response['q'+index];
+      var question = response['Question'+index];
 	  console.log(question);
       
       window.question_ids.push(question_id);
@@ -120,7 +120,6 @@ function display_question(response) {
 
  function sendAnswers() {
     var response = [];
-	//	document.getElementById("selection").innerHTML = "";
 	response.push({"name":survey });
     for (var index = 1; index <= window.question_ids.length; index++) {
       	var qu_id = window.question_ids[index-1];
@@ -128,7 +127,6 @@ function display_question(response) {
       	data['ID'] = qu_id;
       	data['answer_body'] = document.getElementById(qu_id).value;
 	response.push(data);
-	//console.log(JSON.stringify(response));
 	}
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
